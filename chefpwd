@@ -46,4 +46,17 @@ git add .
 git commit -am "adding cookbook learn" (a for all and m is for message)
 git push -u origin master
 
+creating a new cookbook called apache and uploading to webserver node
+
+chef generate cookbook cookbooks/apache
+amend default.rb file to install, start and enable apache2
+create new recipe call websites.rb to create a personalized index page
+
+upload the cookbook
+
+knife cookbook upload apache
+
+add to git hub by the above commands
+
+
 

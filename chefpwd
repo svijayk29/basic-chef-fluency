@@ -1,0 +1,37 @@
+
+centos7 chef server lab installation
+chef-server-ctl reconfigure
+chef-server-ctl user-create  vijay  vijay roark vijay.roark@gmail.com 'Ramana29@' --filename vijay-user-rsa
+username vijay
+fullname vijay roark
+email vijay.roark@gmail.com
+password 'Ramana29@'
+ --filename vijay-user-rsa
+
+ chef-server-ctl org-create roarkent 'roark enterprises' --association_user vijay --filenam roarkent-validator-pem
+
+
+organization name roarkent
+fullname'roark enterprises'
+ --association_user vijay
+ --filename roarkent-validator.pem
+
+chef-server-ctl install chef-manage
+chef-manage-ctl reconfigure
+knife ssl check - successful
+bootstrapping a node(needs internet connection)
+knife bootstrap 192.168.1.212  -N webserver --ssh-user vijay --sudo
+"chefpwd"
+
+create github account
+username svijayk29
+vijay.roark@gmail.com
+Ramana29@
+created a new repository basi-chef-fluency
+now back at workstation
+git init
+git add README.md
+git commit -m "first commit" ( m is for message)
+git remote add origin https://github.com/svijayk29/basi-chef-fluency.git
+git push -u origin master
+

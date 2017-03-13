@@ -26,12 +26,24 @@ knife bootstrap 192.168.1.212  -N webserver --ssh-user vijay --sudo
 create github account
 username svijayk29
 vijay.roark@gmail.com
-Ramana29@
-created a new repository basi-chef-fluency
+ramana29
+created a new repository basic-chef-fluency
 now back at workstation
 git init
-git add README.md
-git commit -m "first commit" ( m is for message)
-git remote add origin https://github.com/svijayk29/basi-chef-fluency.git
+git add .
+git commit -am "first commit" (a for all and m is for message)
+git config --global user-email "vijay.roark@gmail.com" (just once)
+git config --global user-name " vijay"  (just once)
+
+git remote add origin https://github.com/svijayk29/basic-chef-fluency.git (just once)
+
 git push -u origin master
+
+creating a new cookbook and uploading to github
+
+knife cookbook create learn
+git add .
+git commit -am "adding cookbook learn" (a for all and m is for message)
+git push -u origin master
+
 

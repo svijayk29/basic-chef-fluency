@@ -10,21 +10,31 @@ package = "apache2"
 elsif node['platform_family']=="rhel"
 package = "httpd"
 end
-package 'httpd' do
+#package 'httpd' do
 
-    package_name package
+#    package_name package
 #          package_name 'apache2'
-          action :install
+ #         action :install
+#end
+
+#service 'web' do
+      if service_name == 'apache2'
+       service 'apache2' do
+         action [:start, :enable]
+       end
+
+
+   elsif service_name == 'httpd'
+
+  service 'httpd' do
+  action [:start, :enable]
 end
 
-service 'httpd' do
-       service_name 'apache2'
-       action [:start, :enable]
-end
 
-service 'apache' do
-service_name 'httpd'
-action [:start, :enable]
-end
+
+#service 'apache' do
+#service_name 'httpd'
+#action [:start, :enable]
+#end
 
 #include_recipe 'apache::websites'

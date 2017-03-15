@@ -94,4 +94,42 @@ knife node run_list add webserver 'recipe[apache::websites]' -a 'recipe[apache]
 
 knife node run_list remove  webserver 'recipe[apache::websites], recipe[apache]'
 
+edited default.rb file to include an if condition for centos and apache by using node attribute(platform)
+
+created a new file motd.rb with a file attribute to display a message using node attriute(hostname) and using a variable to hold the hostname
+
+changed metadata file to version 0.2.1
+
+uploaded to git
+
+knife cookbook upload apache
+
+knife node run_list add webserver 'recipe[motd]'
+
+then run chef-client on node webserver as root)otherwise fails because cant find key)
+
+Missing Cookbooks:
+------------------
+The following cookbooks are required by the client but don't exist on the server:
+* motd
+
+go back to work station and 
+$knife node run_list remove webserver 'recipe[motd]'
+and
+$knife node run_list add webserver 'recipe[apache::motd]'
+
+result is
+
+webserver:
+  run_list:
+    recipe[apache]
+    recipe[apache::websites]
+    recipe[apache::motd]
+
+now go back to node webserver and run
+
+chef-client 
+
+if condition didnt work properly even thoough apache2 installed started and index page changed. But chef was also looking for httpd service to start(this is based on my own addition to recipe. i need to  fix it. didnt create motd file either.
+
 

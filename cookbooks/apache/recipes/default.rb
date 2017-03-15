@@ -18,13 +18,13 @@ end
 #end
 
 #service 'web' do
-      if service_name == 'apache2'
+      if service_name == "apache2"
        service 'apache2' do
          action [:start, :enable]
        end
 
 
-   elsif service_name == 'httpd'
+   elsif service_name == "httpd"
 
   service 'httpd' do
   action [:start, :enable]

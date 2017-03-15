@@ -18,17 +18,23 @@ end
 #end
 
 #service 'web' do
-      if service_name == "apache2"
-       service 'apache2' do
-         action [:start, :enable]
-       end
+if node['platform_family']=="debian"
+
+    service_name = "apache2"
+  #    service = 'apache2'
+      action [:start, :enable]
+elsif node['platform_family']=="rhel"
+service_name = "httpd"
+     # service = 'apache2'
+      action [:start, :enable]
+    end
 
 
-   elsif service_name == "httpd"
+   #elsif service_name == "httpd"
 
-  service 'httpd' do
-  action [:start, :enable]
-end
+#  service 'httpd' do
+ # action [:start, :enable]
+#end
 
 
 

@@ -58,5 +58,40 @@ knife cookbook upload apache
 
 add to git hub by the above commands
 
+knife node list command shows nodes running
+
+to add a run list to a node
+
+knife node run_list add webserver 'recipe[apache]'
+
+to show various attributes of node
+knife node show webserver
+
+knife node show -l webserver(all)
+
+dry run command
+
+ chef-client --why-run
+
+then to implement default.rb
+chef-client
+
+make changes to default.rb to include websites file and upload
+knife cookbook upload apache
+chef-client   (to see the custom index file)
+
+next remove include_file command from default.rb file and put in a seperate run list
+
+knife node run_list add webserver 'recipe[apache::websites]'
+
+next i tried removing the index file with action :delete and then uploaded the cookbook to node
+
+knife cookbook upload apache
+
+knife node run_list add webserver 'recipe[apache::websites]' -b 'recipe[apache]
+
+knife node run_list add webserver 'recipe[apache::websites]' -a 'recipe[apache]
+
+knife node run_list remove  webserver 'recipe[apache::websites], recipe[apache]'
 
 

@@ -10,20 +10,19 @@ package = "apache2"
 package 'apache2' do
 
  package_name package
-  package_name 'apache2'
+#  package_name 'apache2'
  action :install
 end
-end
-#elsif node['platform_family']=="rhel"
-#package = "httpd"
-#end
-#package 'httpd' do
 
-#    package_name package
+elsif node['platform_family']=="rhel"
+package = "httpd"
+package 'httpd' do
+
+    package_name package
 #          package_name 'apache2'
- #         action :install
-#end
-
+         action :install
+end
+end
 #service 'web' do
 
 

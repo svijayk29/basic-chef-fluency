@@ -5,6 +5,6 @@
 
 file 'default www' do
 path '/var/www/html/index.html'
-content 'Hello New Vijay World'
+content 'Hello pissed Vijay World'
 end
 

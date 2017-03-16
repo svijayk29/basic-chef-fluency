@@ -5,11 +5,18 @@
 # Copyright:: 2017, The Authors, All Rights Reserved.
 # install apache2 package
 
-if node['platform_family']=="debian"
+if node['platform_family']=="debian" 
 package = "apache2"
-elsif node['platform_family']=="rhel"
-package = "httpd"
+package 'apache2' do
+
+ package_name package
+  package_name 'apache2'
+ action :install
 end
+end
+#elsif node['platform_family']=="rhel"
+#package = "httpd"
+#end
 #package 'httpd' do
 
 #    package_name package
@@ -18,20 +25,20 @@ end
 #end
 
 #service 'web' do
-if node['platform_family']=="debian"
 
-service 'apache' do
-service_name 'apache2'
-action [:start, :enable]
-end
 
-elsif node['platform_family']=="rhel"
-service 'httpd' do
-service_name 'httpd'
-action [:start, :enable]
-end
 
-end
+
+
+
+
+
+
+
+
+
+
+
 
 
 #    service_name = "apache2"

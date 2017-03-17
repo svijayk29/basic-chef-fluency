@@ -136,3 +136,15 @@ if condition didnt work properly even thoough apache2 installed started and inde
 fixed all errors by creating two if conditions. worked on ubu and now going to bootstrap centos and test
 bootstrap succeeded but chef-client failed to run runlists correctly
 The problem was with the code for httpd package installation code. Cleaned it up and worked perfectly on centos too.
+SEARCH -
+knife search index key:string
+knife search 'platform_family:rhel' 
+knife search 'recipes:apache'
+knife search 'recipes:apache\:\:motd'
+knife search 'recipes:apache\:\:*'
+knife search 'p?atform:ubuntu' -a hostname
+knife search 'p?atform:centos' -a platform_family
+knife search "*.*" -a ipaddress
+knife search "*.*" -a run_list
+knife search "*.*" -a recipes
+

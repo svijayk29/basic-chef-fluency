@@ -5,7 +5,7 @@
 
 file 'default www' do
 path '/var/www/html/index.html'
-content 'Hello vijay version 1.0'
+content 'Hello vijay version 2.0'
 end
 
 webnodes = search('node', 'role:web')

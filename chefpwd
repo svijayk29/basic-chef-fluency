@@ -137,7 +137,7 @@ fixed all errors by creating two if conditions. worked on ubu and now going to b
 bootstrap succeeded but chef-client failed to run runlists correctly
 The problem was with the code for httpd package installation code. Cleaned it up and worked perfectly on centos too.
 SEARCH -
-knife search index key:string
+knife search index 'key:string'
 knife search 'platform_family:rhel' 
 knife search 'recipes:apache'
 knife search 'recipes:apache\:\:motd'
@@ -147,4 +147,34 @@ knife search 'p?atform:centos' -a platform_family
 knife search "*.*" -a ipaddress
 knife search "*.*" -a run_list
 knife search "*.*" -a recipes
+bootstrapping a new node centdbserver 
+knife bootstrap 192.168.1.215  -N centdbserver1 --ssh-user vijay --sudo
+after bootstrapping, we will generate a new cookbook as we are going install and start postgresql on our centdbserver1
+chef generate cookbook postgresql
+we then cd into recipes and open up default.rb to put the following recipe in
+and then push it to github
+Next we learn on how to create roles
+we then go to chef-manage and remove runlists from centwebserver3 and ubwebserver1
+we go back to workstation and set the editor variable so that chef templates(for roles) open in that editor
+export EDITOR=$(which vim)
+to make the change persistent we add to .bashrc file
+export EDITOR=$(which vim)
+knife role create web
+added recipes to runlist in the template that opened up and saved and then -Created role[webserver]
+knife cookbook upload postgresql
+knife role create dbserver
+updated runlist with cookbook postgresql, saved and then
+Created role[dbserver]
+to edit a role
+knife role edit webserver
+next assiging nodes to roles
+knife node run_list set web1 "role[web]"( using node name rather than hostname)
+#knife node run_list set centwebserver3 "role[webserver]"
+before this assignment there are no runlists on these servers(were removed through chef-manage)
+I can test by running chef-client on both servers
+worked perfectly
+Next I want to run chef-clients of all nodes with role=webserver
+knife ssh "role:web" "sudo chef-client" -x vijay -P  
+knife ssh "role:dbserver" "sudo chef-client" -x vijay -P(worked)
+knife ssh "role:dbserver" "systemctl status postgresql" -x vijay -P(worked)
 

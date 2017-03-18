@@ -5,7 +5,7 @@
 
 file 'default www' do
 path '/var/www/html/index.html'
-content 'Hello Testing commmand to run chef-client from workstation'
+content 'Hello vijay version 1.0'
 end
 
 webnodes = search('node', 'role:web')

@@ -177,4 +177,14 @@ Next I want to run chef-clients of all nodes with role=webserver
 knife ssh "role:web" "sudo chef-client" -x vijay -P  
 knife ssh "role:dbserver" "sudo chef-client" -x vijay -P(worked)
 knife ssh "role:dbserver" "systemctl status postgresql" -x vijay -P(worked)
+Now we are going to learn search function  in a run list
+we have amemded the websites file to add code for a node to display its information when you run chef-client on that node
+Next environments
+created a node called staging annd bootstrapping it with the command
+knife  bootstrap 192.168.1.219 -N staging -x vijay --sudo
+we can use the command knife node list to show how many nodes are runnin
+knife node run_list add staging 'role[web]'
+knife role show web
+create a new version of apache cookbook(through metadata.rb) and upload the new vrsion
+we can then create two different environments production , staging and assign appropriate version to each environment
 
